@@ -49,37 +49,37 @@ if __name__ == "__main__":
     ]
     
     domains = {
-        'S': ['low', 'medium', 'high'],
-        'D': ['medium', 'high'],
-        'v1': ['low', 'medium'],
-        'v2': ['low', 'medium', 'high'],
-        'v3': ['medium', 'high'],
-        'v4': ['low', 'medium'],
-        'v5': ['low', 'medium', 'high'],
-        's1': ['medium', 'high'],
-        's2': ['low', 'medium'],
-        's3': ['low', 'medium', 'high'],
-        's4': ['medium', 'high'],
-        's5': ['low', 'medium'],
-        's6': ['low', 'medium', 'high'],
-        's7': ['medium', 'high'],
-        'm1': ['low', 'medium'],
-        'm2': ['low', 'medium', 'high'],
-        'm3': ['medium', 'high'],
+        'S': ['low', 'high'],
+        'D': ['high'],
+        'v1': ['low'],
+        'v2': ['low', 'high'],
+        'v3': [ 'high'],
+        'v4': ['low'],
+        'v5': ['low', 'high'],
+        's1': ['low', 'high'],
+        's2': ['low'],
+        's3': ['low', 'high'],
+        's4': [ 'high'],
+        's5': ['low'],
+        's6': ['low', 'high'],
+        's7': [ 'high'],
+        'm1': ['low'],
+        'm2': ['low', 'high'],
+        'm3': [ 'high'],
     }
 
     constraints = {
         ('S', 'v1'): lambda node, vnf: node == 'low' and vnf == 'low',
         ('S', 'v2'): lambda node, vnf: node != 'low' or vnf != 'low',
-        ('v1', 'v2'): lambda vnf, node: vnf == 'medium' or node == 'medium',
-        ('v2', 'v3'): lambda vnf, node: vnf == 'medium' or node == 'medium',
-        ('s1', 's2'): lambda node, vnf: node == 'high' and vnf == 'high',
-        ('s2', 's3'): lambda node, vnf: node == 'medium' or vnf == 'medium',
-        ('s3', 's4'): lambda node, vnf: node == 'medium' or vnf == 'high',
-        ('s4', 'D'): lambda vnf, node: vnf == 'low' or node == 'medium',
-        ('D', 'v5'): lambda node, vnf: node == 'medium' or vnf == 'medium',
+        ('v1', 'v2'): lambda vnf, node: vnf == 'high',
+        ('v2', 'v3'): lambda vnf, node: vnf == 'high',  
+        ('s1', 's2'): lambda node, vnf: node == 'high' and vnf == 'low',
+        ('s2', 's3'): lambda node, vnf: node == 'low',
+        ('s3', 's4'): lambda node, vnf: vnf == 'high',
+        ('s4', 'D'): lambda vnf, node: vnf == 'low' or node == 'high',
+        ('D', 'v5'): lambda node, vnf: node == 'low',
         ('v5', 'v4'): lambda node, vnf: node == 'high' or vnf == 'high',
-        ('v4', 'v3'): lambda node, vnf: node == 'medium' or vnf == 'medium'
+        ('v4', 'v3'): lambda node, vnf: node == 'low' or vnf == 'low'
         # Add more constraints here based on your requirements
     }
 
